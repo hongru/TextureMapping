@@ -1,6 +1,7 @@
 /* TextureMapping.Image */
 
 ;(function (tm) {
+    var Triangle = tm.Triangle;
 
     tm.Image = function (canvas, imgSrc, lev) {
         this.canvas        = canvas;

@@ -57,17 +57,23 @@ var TextureMapping = {};
 /* TextureMapping.Image */
 
 ;(function (tm) {
+    var Triangle = tm.Triangle;
 
     tm.Image = function (canvas, imgSrc, lev) {
         this.canvas        = canvas;
         this.ctx           = canvas.getContext("2d");
-        this.texture       = new Image();
-        this.texture.src   = imgSrc;
         this.lev           = lev;
         this.isLoading     = true;
         this.firstPoint    = false;
         this.firstTriangle = false;
         this.prev          = false;
+        if (typeof imgSrc == 'string') {
+            this.texture       = new Image();
+            this.texture.src   = imgSrc;
+        } else if (/img/i.test(imgSrc.nodeName)) {
+            this.texture = imgSrc;
+        }
+        
     };
     
     // tm.Image.prototype
